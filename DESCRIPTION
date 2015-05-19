@@ -1,9 +1,9 @@
 Package: epivizWidgets
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1
+Title: htmlwidgets based on the epiviz JS library
+Version: 0.0.99
 Date: 2015-05-19
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Authors@R: person("Hector", "Corrada Bravo", email = "hcorrada@gmail.com", role = c("aut", "cre"))
+Description: Create htmlwidgets using the epiviz JS library and the epivizr bioconductor package
+License: Artistic-2.0
 LazyData: TRUE
