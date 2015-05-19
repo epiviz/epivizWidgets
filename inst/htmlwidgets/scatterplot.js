@@ -6,15 +6,13 @@ HTMLWidgets.widget({
 
   initialize: function(el, width, height) {
 
-    return {
-      // TODO: add instance fields as required
-    }
+    //return epiviz.plugins.charts.ScatterPlot("someid1", el, {});
 
   },
 
-  renderValue: function(el, x, instance) {
+  renderValue: function(el, bindings, instance) {
 
-    el.innerText = x.message;
+    console.log(bindings);
 
   },
 

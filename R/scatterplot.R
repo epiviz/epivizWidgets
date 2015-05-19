@@ -5,17 +5,27 @@
 #' @import htmlwidgets
 #'
 #' @export
-scatterplot <- function(message, width = NULL, height = NULL) {
+scatterplot <- function(obj, columns, width = NULL, height = NULL, ...) {
+  msObj <- epivizr:::register(obj, ...)
+  ms <- msObj$getMeasurements()
+
+  query <- range(as(rowRanges(tmp$object), "GRanges"))[1]
+  rows <- msObj$getRows(query, NULL)
+  xval <- msObj$getValues(query, columns[1])
+  yval <- msObj$getValues(query, columns[2])
 
   # forward options using x
-  x = list(
-    message = message
+  bindings = list(
+    ms=rjson::toJSON(ms),
+    rows=rows,
+    xval=xval,
+    yval=yval
   )
 
   # create widget
   htmlwidgets::createWidget(
     name = 'scatterplot',
-    x,
+    bindings,
     width = width,
     height = height,
     package = 'epivizWidgets'
