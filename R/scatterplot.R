@@ -11,15 +11,16 @@ scatterplot <- function(obj, columns, width = NULL, height = NULL, ...) {
 
   query <- range(as(rowRanges(tmp$object), "GRanges"))[1]
   rows <- msObj$getRows(query, NULL)
-  xval <- msObj$getValues(query, columns[1])
-  yval <- msObj$getValues(query, columns[2])
+  values <- lapply(columns, function(i) msObj$getValues(query, i))
 
   # forward options using x
   bindings = list(
+    range=list(seqname=as.character(seqnames(query))[1],
+               start=start(query)[1],
+               width=width(query)[1]),
     ms=rjson::toJSON(ms),
     rows=rows,
-    xval=xval,
-    yval=yval
+    values=values
   )
 
   # create widget
