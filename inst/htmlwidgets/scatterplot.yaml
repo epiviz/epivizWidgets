@@ -5,3 +5,7 @@ dependencies:
     src: "htmlwidgets/lib/epiviz"
     script: "epiviz-min.js"
     stylesheet: "epiviz-min.css"
+  - name: "epiviz_settings"
+    version: "2.0"
+    src: "htmlwidgets/lib/epiviz/src/epiviz"
+    script: "standalone-settings.js"

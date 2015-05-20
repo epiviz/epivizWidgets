@@ -5,8 +5,10 @@ HTMLWidgets.widget({
   type: 'output',
 
   initialize: function(el, width, height) {
+    var config = new epiviz.Config(epiviz.Config.SETTINGS);
 
     return {
+      config: config,
       width: width,
       height: height,
     };
@@ -58,7 +60,7 @@ HTMLWidgets.widget({
     var chartData = new epiviz.datatypes.MapGenomicData(chartDataHash);
     var config = new epiviz.ui.controls.VisConfigSelection(ms);
 
-    var chartType = new epiviz.plugins.charts.ScatterPlotType();
+    var chartType = new epiviz.plugins.charts.ScatterPlotType(instance.config);
     var chartProperties = new epiviz.ui.charts.VisualizationProperties(
       instance.width,
       instance.height,
