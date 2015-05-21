@@ -8,6 +8,11 @@
  * Overrides the default configuration settings for EpiViz
  */
 epiviz.Config.SETTINGS = {
+  dataProviders: [
+    sprintf('epiviz.data.EmptyResponseDataProvider', 'empty', '')
+  ],
+
+  workspacesDataProvider: sprintf('epiviz.data.EmptyResponseDataProvider', 'empty', ''),
 
   chartTypes: [
     'epiviz.plugins.charts.BlocksTrackType',
