@@ -74,7 +74,7 @@ HTMLWidgets.widget({
       null
     );
 
-    chart = new epiviz.plugins.charts.ScatterPlot("someid2", el, chartProperties);
+    chart = new epiviz.plugins.charts.ScatterPlot("someid2", $(el), chartProperties);
     chart.draw(undefined, chartData);
   },
 
