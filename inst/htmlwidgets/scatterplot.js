@@ -46,6 +46,14 @@ HTMLWidgets.widget({
       );
       ms.add(measurement);
 
+      row_data = new epiviz.datatypes.GenomicRangeArray(
+        measurement,
+        boundaries,
+        bindings.rows.globalStartIndex,
+        bindings.rows.values,
+        bindings.rows.useOffset
+      );
+
       feature_vals = new epiviz.datatypes.FeatureValueArray(
         measurement,
         boundaries,
@@ -53,6 +61,7 @@ HTMLWidgets.widget({
         bindings.values[i].values
       );
 
+      se.addRowData(row_data);
       se.addValues(feature_vals);
       chartDataHash.put(measurement, new epiviz.datatypes.MeasurementGenomicDataWrapper(measurement, se));
     }
@@ -75,7 +84,9 @@ HTMLWidgets.widget({
     );
 
     chart = new epiviz.plugins.charts.ScatterPlot("someid2", $(el), chartProperties);
-    chart.draw(undefined, chartData);
+
+    // this should be 'undefined' instead of 'boundaries'
+    chart.draw(boundaries, chartData);
   },
 
   resize: function(el, width, height, instance) {

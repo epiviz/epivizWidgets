@@ -9,7 +9,7 @@ scatterplot <- function(obj, columns, width = NULL, height = NULL, ...) {
   msObj <- epivizr:::register(obj, ...)
   ms <- msObj$getMeasurements()
 
-  query <- range(as(rowRanges(tmp$object), "GRanges"))[1]
+  query <- range(as(rowRanges(msObj$object), "GRanges"))[1]
   rows <- msObj$getRows(query, NULL)
   values <- lapply(columns, function(i) msObj$getValues(query, i))
 
