@@ -33,6 +33,7 @@ scatterplot <- function(obj, columns, width = NULL, height = NULL, ...) {
     bindings,
     width = width,
     height = height,
+    sizingPolicy = htmlwidgets::sizingPolicy(padding=0, browser.fill=TRUE),
     package = 'epivizWidgets'
   )
 }
