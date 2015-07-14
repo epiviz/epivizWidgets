@@ -83,7 +83,7 @@ HTMLWidgets.widget({
       null
     );
 
-    chart = new epiviz.plugins.charts.ScatterPlot("someid2", $(el), chartProperties);
+    chart = new epiviz.plugins.charts.ScatterPlot($(el).attr("id"), $(el), chartProperties);
 
     // this should be 'undefined' instead of 'boundaries'
     chart.draw(boundaries, chartData);
@@ -91,8 +91,10 @@ HTMLWidgets.widget({
   },
 
   resize: function(el, width, height, instance) {
-    console.log("resized called"+ el + " " + width + " " + height);
-    instance.chart.resize(width, height);
+    //console.log("resized called"+ el + " " + width + " " + height);
+    if (instance.chart) {
+      instance.chart.resize(width, height);
+    }
   }
 
 });
