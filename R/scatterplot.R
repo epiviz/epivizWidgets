@@ -9,6 +9,10 @@ scatterplot <- function(obj, columns, width = NULL, height = NULL, ...) {
   msObj <- epivizr:::register(obj, ...)
   ms <- msObj$getMeasurements()
 
+  # make sure they are ordered properly
+  m <- match(columns, sapply(ms, "[[", "id"))
+  ms <- ms[m]
+
   query <- range(as(rowRanges(msObj$object), "GRanges"))[1]
   rows <- msObj$getRows(query, NULL)
   values <- lapply(columns, function(i) msObj$getValues(query, i))

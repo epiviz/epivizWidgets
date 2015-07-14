@@ -5,16 +5,20 @@ date: "June 1, 2015"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r options, echo=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Example using epiviz scatterplot in Rmarkdown.
 
-```{r}
+```{r pkgs, message=FALSE}
 require(epivizr)
 require(antiProfilesData)
 
 data(apColonData)
+```
 
+```{r setup}
 keep <- pData(apColonData)$SubType!="adenoma"
 apColonData <- apColonData[,keep]
 status <- pData(apColonData)$Status
@@ -27,11 +31,10 @@ assayDataElement(apColonData, "MA") <- mat
 show(apColonData)
 ```
 
-You can also embed plots, for example:
+This is how it's used.
 
-```{r, echo=FALSE}
+```{r scatterplot, cache=FALSE}
 library(epivizWidgets)
 epivizWidgets::scatterplot(apColonData, columns=c("colonA","colonM"), assay="MA")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
