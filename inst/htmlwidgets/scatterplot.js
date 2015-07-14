@@ -87,10 +87,12 @@ HTMLWidgets.widget({
 
     // this should be 'undefined' instead of 'boundaries'
     chart.draw(boundaries, chartData);
+    instance.chart = chart;
   },
 
   resize: function(el, width, height, instance) {
-
+    console.log("resized called"+ el + " " + width + " " + height);
+    instance.chart.resize(width, height);
   }
 
 });
