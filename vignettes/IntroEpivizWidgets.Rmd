@@ -2,14 +2,19 @@
 title: "Epiviz Widgets"
 author: "Hector Corrada Bravo"
 date: "June 1, 2015"
-output: html_document
+output: 
+  html_document:
+    theme: default
 ---
 
 ```{r options, echo=FALSE}
 knitr::opts_chunk$set(cache=TRUE)
 ```
 
-Example using epiviz scatterplot in Rmarkdown.
+This is a prototype of embedding epiviz JS visualizations on Rmarkdown using the `epivizWidgets` package.
+This infrastructure is built on `htmlwidgets`.
+
+Plotting an `ExpressionSet`. Compute average for tumor and normal, then make an MA plot. 
 
 ```{r pkgs, message=FALSE}
 require(epivizr)
@@ -31,10 +36,19 @@ assayDataElement(apColonData, "MA") <- mat
 show(apColonData)
 ```
 
-This is how it's used.
+This is how it's used. `apColonData` is an `ExpressionSet`, `columns` specify which columns in assay `MA` are going to be plotted.
 
 ```{r scatterplot, cache=FALSE}
 library(epivizWidgets)
 epivizWidgets::scatterplot(apColonData, columns=c("colonA","colonM"), assay="MA")
 ```
+
+TODO: 
+
+- add epiviz decorations (tool-tips, settings dialogs).  
+- fix issue with CSS styles  
+
+More advanced TODO: 
+
+- use the epiviz event infrastructure to implement highlight-on-hover.  
 
