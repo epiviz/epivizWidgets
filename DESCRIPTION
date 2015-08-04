@@ -7,3 +7,5 @@ Authors@R: person("Hector", "Corrada Bravo", email = "hcorrada@gmail.com", role 
 Description: Create htmlwidgets using the epiviz JS library and the epivizr bioconductor package
 License: Artistic-2.0
 LazyData: TRUE
+Depends: R (>= 3.2.0), methods, Biobase, epivizr
+Imports: GenomicRanges (>= 1.20.0)
